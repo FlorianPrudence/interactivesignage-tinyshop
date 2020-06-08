@@ -1,2 +1,2 @@
 # interactive-template-tinyshop
-Template pour interactive signage "tiny shop"
+Template pour interactive signage "tiny shop".
