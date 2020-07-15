@@ -5,7 +5,7 @@
   <Author>Altazion</Author>
   <BasedOn>Vending</BasedOn>
   <Content root=".">
-    <Variation code="Main" label="Principal">
+    <Variation code="Main" label="Version vanilla">
       <VariationContent kind="ProductPage">
         <Folder path="Main" />
       </VariationContent>
