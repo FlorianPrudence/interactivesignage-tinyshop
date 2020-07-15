@@ -1,0 +1,26 @@
+body.HomePage .search {
+    position: fixed !important;
+    top: 32%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+body.HomePage .search-suggest {
+    background: #fff;
+    padding: 2rem 3rem;
+    width: 57.5rem;
+    -webkit-box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.2);
+    max-height: 26rem;
+    overflow-y: scroll;
+}
+
+body.HomePage .head-right .search input, body.HomePage  .head-right .search .bar {
+    width: 60rem;
+    padding-right: 3.5rem;
+}
+
+body.HomePage div.ps-slides > div:first-child {
+    filter: brightness(.4) grayscale(.3);
+}

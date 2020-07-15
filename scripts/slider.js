@@ -1,1 +1,165 @@
-var Slider=function(){var n=$("#ps-container"),e=n.children("div.ps-contentwrapper").children("div.ps-content"),s=e.length,i=n.children("div.ps-slidewrapper"),t=i.find("div.ps-slides").children("div"),r=i.find("nav > a.ps-prev"),a=i.find("nav > a.ps-next"),o=0,d=!1,c=Modernizr.csstransitions,l={WebkitTransition:"webkitTransitionEnd",MozTransition:"transitionend",OTransition:"oTransitionEnd",msTransition:"MSTransitionEnd",transition:"transitionend"}[Modernizr.prefixed("transition")],v=function(){var n=o>0?t.eq(o-1).css("background-image"):t.eq(s-1).css("background-image"),e=o<s-1?t.eq(o+1).css("background-image"):t.eq(0).css("background-image");r.css("background-image",n),a.css("background-image",e)},f=function(){r.on("click",function(n){return d||u("prev"),!1}),a.on("click",function(n){return d||u("next"),!1}),e.on(l,p),t.on(l,p)},p=function(){d=!1,$(this).removeClass("ps-move")},u=function(n){d=!0;var i=e.eq(o),r=t.eq(o);"next"===n?o<s-1?++o:o=0:"prev"===n&&(o>0?--o:o=s-1);var a=e.eq(o),l=t.eq(o);a.css({left:"next"===n?"100%":"-100%",zIndex:999}),l.css({left:"next"===n?"100%":"-100%",zIndex:999}),setTimeout(function(){i.addClass("ps-move").css({left:"next"===n?"-100%":"100%",zIndex:1}),r.addClass("ps-move").css({left:"next"===n?"-100%":"100%",zIndex:1}),a.addClass("ps-move").css("left",0),l.addClass("ps-move").css("left",0),c||(d=!1)},0),v()};return{init:function(){var n=e.eq(o),s=t.eq(o),i={left:0,zIndex:999};n.css(i),s.css(i),v(),f()}}}();
+var Slider = (function() {
+	
+	var $container = $( '#ps-container' ),
+		$contentwrapper = $container.children( 'div.ps-contentwrapper' ),
+		// the items (description elements for the slides/products)
+		$items = $contentwrapper.children( 'div.ps-content' ),
+		itemsCount = $items.length,
+		$slidewrapper = $container.children( 'div.ps-slidewrapper' ),
+		// the slides (product images)
+		$slidescontainer = $slidewrapper.find( 'div.ps-slides' ),
+		$slides = $slidescontainer.children( 'div' ),
+		// navigation arrows
+		$navprev = $slidewrapper.find( 'nav > a.ps-prev' ),
+		$navnext = $slidewrapper.find( 'nav > a.ps-next' ),
+		// current index for items and slides
+		current = 0,
+		// checks if the transition is in progress
+		isAnimating = false,
+		// support for CSS transitions
+		support = Modernizr.csstransitions,
+		// transition end event
+		// https://github.com/twitter/bootstrap/issues/2870
+		transEndEventNames = {
+			'WebkitTransition' : 'webkitTransitionEnd',
+			'MozTransition' : 'transitionend',
+			'OTransition' : 'oTransitionEnd',
+			'msTransition' : 'MSTransitionEnd',
+			'transition' : 'transitionend'
+		},
+		// its name
+		transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
+
+		init = function() {
+
+			// show first item
+			var $currentItem = $items.eq( current ),
+				$currentSlide = $slides.eq( current ),
+				initCSS = {
+					left : 0,
+					zIndex : 999
+				};
+
+			$currentItem.css( initCSS );
+			$currentSlide.css( initCSS );
+			
+			// update nav images
+			updateNavImages();
+
+			// initialize some events
+			initEvents();
+
+		},
+		updateNavImages = function() {
+
+			// updates the background image for the navigation arrows
+			var configPrev = ( current > 0 ) ? $slides.eq( current - 1 ).css( 'background-image' ) : $slides.eq( itemsCount - 1 ).css( 'background-image' ),
+				configNext = ( current < itemsCount - 1 ) ? $slides.eq( current + 1 ).css( 'background-image' ) : $slides.eq( 0 ).css( 'background-image' );
+
+			$navprev.css( 'background-image', configPrev );
+			$navnext.css( 'background-image', configNext );
+
+		},
+		initEvents = function() {
+
+			$navprev.on( 'click', function( event ) {
+
+				if( !isAnimating ) {
+					
+					slide( 'prev' );
+				
+				}
+				return false;
+
+			} );
+
+			$navnext.on( 'click', function( event ) {
+
+				if( !isAnimating ) {
+					
+					slide( 'next' );
+				
+				}
+				return false;
+
+			} );
+
+			// transition end event
+			$items.on( transEndEventName, removeTransition );
+			$slides.on( transEndEventName, removeTransition );
+			
+		},
+		removeTransition = function() {
+
+			isAnimating = false;
+			$(this).removeClass('ps-move');
+
+		},
+		slide = function( dir ) {
+
+			isAnimating = true;
+
+			var $currentItem = $items.eq( current ),
+				$currentSlide = $slides.eq( current );
+
+			// update current value
+			if( dir === 'next' ) {
+
+				( current < itemsCount - 1 ) ? ++current : current = 0;
+
+			}
+			else if( dir === 'prev' ) {
+
+				( current > 0 ) ? --current : current = itemsCount - 1;
+
+			}
+				// new item that will be shown
+			var $newItem = $items.eq( current ),
+				// new slide that will be shown
+				$newSlide = $slides.eq( current );
+
+			// position the new item up or down the viewport depending on the direction
+			$newItem.css( {
+				left : ( dir === 'next' ) ? '100%' : '-100%',
+				zIndex : 999
+			} );
+			
+			$newSlide.css( {
+				left : ( dir === 'next' ) ? '100%' : '-100%',
+				zIndex : 999
+			} );
+
+			setTimeout( function() {
+
+				// move the current item and slide to the left or bottom depending on the direction 
+				$currentItem.addClass( 'ps-move' ).css( {
+					left : ( dir === 'next' ) ? '-100%' : '100%',
+					zIndex : 1
+				} );
+
+				$currentSlide.addClass( 'ps-move' ).css( {
+					left : ( dir === 'next' ) ? '-100%' : '100%',
+					zIndex : 1
+				} );
+
+				// move the new ones to the main viewport
+				$newItem.addClass( 'ps-move' ).css( 'left', 0 );
+				$newSlide.addClass( 'ps-move' ).css( 'left', 0 );
+
+				// if no CSS transitions set the isAnimating flag to false
+				if( !support ) {
+
+					isAnimating = false;
+
+				}
+
+			}, 0 );
+
+			// update nav images
+			updateNavImages();
+
+		};
+
+	return { init : init };
+
+})();

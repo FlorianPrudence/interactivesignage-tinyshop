@@ -1,46 +1,69 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Template xmlns="https://schemas.altazion.com/sys/template.xsd">
   <Name>demo-tinyshop</Name>
   <Description>Lorem Ipsum</Description>
   <Author>Altazion</Author>
   <BasedOn>Vending</BasedOn>
-
   <Content root=".">
-    <Variation code="01" label="Main">
+    <Variation code="Main" label="Principal">
       <VariationContent kind="ProductPage">
-        <Folder path="main" />
+        <Folder path="Main" />
       </VariationContent>
       <VariationContent kind="HomePage">
-        <Folder path="main" />
+        <Folder path="Main" />
       </VariationContent>
       <VariationContent kind="Descente">
-        <Folder path="main" />
+        <Folder path="Main" />
       </VariationContent>
       <VariationContent kind="LoadingPage">
-        <Folder path="main" />
+        <Folder path="Main" />
       </VariationContent>
       <VariationContent kind="PageHeader">
-        <Folder path="main" />
+        <Folder path="Main" />
       </VariationContent>
       <VariationContent kind="Panier">
-        <Folder path="main" />
+        <Folder path="Main" />
       </VariationContent>
       <VariationContent kind="ProcessStep1">
-        <Folder path="main" />
+        <Folder path="Main" />
       </VariationContent>
       <VariationContent kind="ProcessStep2">
-        <Folder path="main" />
+        <Folder path="Main" />
+      </VariationContent>
+    </Variation>
+    <Variation code="Search" label="Version avec recherche au centre">
+      <VariationContent kind="HomePage">
+        <Folder path="Search" />
       </VariationContent>
     </Variation>
     <Shared kind="CSS">
       <Folder path="style" />
     </Shared>
     <Shared kind="JS">
-      <File path="scripts/moderniz.custom.79639.js"/>
+      <File path="scripts/modernizr.custom.79639.js"/>
       <File path="scripts/jquery.mCustomScrollbar.concat.min.js"/>
-      <File path="scripts/polyfill.js"/>
+      <File path="scripts/polyfills.js"/>
       <File path="scripts/slider.js"/>
       <File path="scripts/app.js"/>
     </Shared>
   </Content>
+  <Settings>
+    <Variable code="BackgroundImage01" kind="ImageUrl" label="Image de fond Main" defaultValue="https://clientsimplemente.blob.core.windows.net/digitalsignage-resources/bg-home.jpg"/>
+    <Variable code="BackgroundImage02" kind="ImageUrl" label="Image de fond Secondaire" defaultValue="https://clientsimplemente.blob.core.windows.net/digitalsignage-resources/bg-2.jpg"/>
+  </Settings>
+  
+  <ApplicationBaseConfiguration>
+  </ApplicationBaseConfiguration>
+
+  <PublishSettings>
+    <Variations>
+      <Variation code="Main" />
+    </Variations>
+    
+    <Settings>
+      <Setting code="BackgroundImage01" value="https://clientsimplemente.blob.core.windows.net/digitalsignage-resources/bg-home.jpg" />
+      <Setting code="BackgroundImage02" value="https://clientsimplemente.blob.core.windows.net/digitalsignage-resources/bg-2.jpg" />
+    </Settings>  
+  </PublishSettings>
+
 </Template>
