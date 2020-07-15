@@ -1,0 +1,83 @@
+<header class="Main">
+    <a href="#" ng-click="events.goHome()" class="logo"><img src="https://clientsimplemente.blob.core.windows.net/digitalsignage-resources/miam-miam.svg" width="149" alt="Retour à l'accueil"></a>
+    <div class="ariane">
+        <a ng-click="events.goHome()" class="ariane-1">
+            Accueil
+        </a>
+        <a ng-click="events.goTo('Descente', 'back')"
+           ng-show="activeSearch!=null && activeSearch.Text!=null && activeSearch.Text!=''" class="no-animate ariane-2"
+           ng-bind="activeSearch.Text">
+        </a>
+        <span ng-bind="events.getPageScope('FicheProduit').article.Libelle">
+
+        </span>
+
+    </div>
+    <div class="chemin">
+        <a href="" class="chemin-1" ng-class="{'active':currentPage=='Panier'}">
+            <span class="icon-Fichier-5 icon"></span>
+            <span class="chemin-txt">Votre panier</span>
+            <span class="icon-Fichier-3"></span>
+        </a>
+        <a href="" class="chemin-2" ng-class="{'active':currentPage=='ProcessStep1'}">
+            <span class="icon-Fichier-25 icon"></span>
+            <span class="chemin-txt">Confirmation</span>
+            <span class="icon-Fichier-3"></span>
+        </a>
+        <a href="" class="chemin-3" ng-class="{'active':currentPage=='ProcessStep2'}">
+            <span class="icon-Fichier-8 icon"></span>
+            <span class="chemin-txt">Paiement</span>
+        </a>
+    </div>
+
+    <div class="head-right">
+        <div class="search">
+            <form ng-submit="events.submitSearch()">
+                <div class="group">
+                    <span class="icon-Fichier-29"></span>
+                    <input type="text" ng-model="searchString" required autocomplete="off" ng-keyup="events.refreshSuggestions()" ng-blur="events.clearSuggestions(1500)">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Que recherchez vous ?</label>
+                </div>
+            </form>
+            <div class="search-suggest" ng-show="events.getSuggestions(3).length>0">
+                <div class="ligne" ng-repeat="suggestion in events.getSuggestions(3)" ng-click="events.invokeSuggestion(suggestion)">
+                    <div class="bloc1 bloc">
+                        <div class="img" ng-style="{'background-image':'url('+suggestion.ImageUrl+')'}"></div>
+                    </div>
+                    <div class="bloc2 bloc">
+                        <!--<p class="cat">Produit fait maison</p>-->
+                        <p>{{suggestion.Label}}</p>
+                    </div>
+                    <div class="bloc3 bloc">
+                        <p>
+                            <span class="prix">
+                                <span class="prix-barre" ng-if="suggestion.PrixBarre!=null" ng-bind-html="suggestion.PrixBarre | FormatCurrency"></span>
+                                <span ng-bind-html="suggestion.PrixFinal | FormatCurrency"></span>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panier">
+            <a href="#" ng-click="events.goTo('Panier')">
+                <span class="nb">{{cart.Lignes.length}}</span>
+                <span class="icon-Fichier-5"></span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<!--<div class="popup suggestion-popup" ng-show="events.getSuggestions(3).length>0">
+    <ul>
+        <li ng-repeat="suggestion in events.getSuggestions(3)" ng-click="events.invokeSuggestion(suggestion)">
+            <div class="img" ng-style="{'background-image':'url('+suggestion.ImageUrl+')'}"></div><span>{{suggestion.Label}}</span>
+        </li>
+    </ul>
+</div>-->
+
+<section class="demo">
+    <span><span>[</span>site de démo<span>]</span></span> Miam-Miam est un site de démonstration utilisant la solution de vente en ligne Commerce-Hub.
+</section>

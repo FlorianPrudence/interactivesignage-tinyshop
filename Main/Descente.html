@@ -1,0 +1,216 @@
+
+<div class="loading-indicator" ng-show="loading">
+    <span class=""></span>
+</div>
+<section class="Liste">
+    <div class="Liste-filtre">
+        <p class="title-filtre">Filtres</p>
+        <button href="#" id="filtre-bt" onclick="afficherPopupFiltre('filtre-prix-ouvert')" class="filtre1 filtre" ng-class="{'disabled': events.getCritereEnumere('prix')==null}">
+            <div class="icon-filtre">
+                <span class="icon-Fichier-28"></span>
+            </div>
+            <div class="filtre-libelle">
+                <p>
+                    Par Prix<br />
+                    <span ng-bind="events.valeurCritereActif('BB9365C8AAAC43D0809A794511432CC1')==null?'Choisir un filtre':events.valeurCritereActif('BB9365C8AAAC43D0809A794511432CC1').Name">Choisir un filtre</span>
+                </p>
+            </div>
+            <div class="filtre-plus">
+                <span class="icon-Fichier-52"></span>
+            </div>
+
+
+        </button>
+
+
+        <div class="filtre-content" id="filtre-prix-ouvert">
+            <ul>
+                <li>
+                    <a class="filtre-liste" ng-class="{'actif' : !(events.estCritereActif('BB9365C8AAAC43D0809A794511432CC1'))}" ng-click="events.retirerCritere('BB9365C8AAAC43D0809A794511432CC1')">
+                        <b>Tous les prix</b>
+                    </a>
+                </li>
+                <li class="" ng-repeat="valeur in events.getCritereEnumere('prix')">
+                    <a class="filtre-liste"
+                       ng-class="{'actif' : events.estCritereValeurActif(valeur.CodeInterne)}"
+                       ng-click="events.ajouterCritere(valeur.CodeInterne)">
+                        <b>{{ valeur.Libelle }}</b>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <script>
+            /* script pour afficher un filtre */
+            function afficherPopupFiltre(popupName) {
+                effacerPopupsFiltres();
+                document.getElementById(popupName).classList.toggle("show");
+                event.preventDefault();
+                event.stopPropagation();
+                return false;
+            }
+            function effacerPopupsFiltres() {
+                var dropdowns = document.getElementsByClassName("filtre-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                        event.preventDefault();
+                    }
+                }
+            }
+            window.onclick = function (event) {
+                if (!event.target.matches('.filtre1')) {
+                    effacerPopupsFiltres();
+                }
+            }
+        </script>
+
+
+        <button class="filtre1 filtre" onclick="afficherPopupFiltre('filtre-saveur-ouvert')" ng-class="{'disabled': events.getCritereEnumere('866EA818D711468099CF9D57CAB392FF')==null}">
+            <div class="icon-filtre">
+                <span class="icon-Fichier-16"></span>
+            </div>
+            <div class="filtre-libelle">
+                <p>
+                    Par saveur<br />
+                    <span ng-bind="events.valeurCritereActif('866EA818D711468099CF9D57CAB392FF')==null?'Choisir un filtre':events.valeurCritereActif('866EA818D711468099CF9D57CAB392FF').Name">Choisir un filtre</span>
+                </p>
+            </div>
+            <div class="filtre-plus">
+                <span class="icon-Fichier-52"></span>
+            </div>
+
+
+        </button>
+        <div class="filtre-content" id="filtre-saveur-ouvert">
+            <ul>
+                <li>
+                    <a class="filtre-liste" ng-class="{'actif' : !(events.estCritereActif('866EA818D711468099CF9D57CAB392FF'))}" ng-click="events.retirerCritere('866EA818D711468099CF9D57CAB392FF')">
+                        <b>Toutes les saveurs</b>
+                    </a>
+                </li>
+                <li ng-repeat="valeur in events.getCritereEnumere('866EA818D711468099CF9D57CAB392FF')">
+                    <a class="filtre-liste"
+                       ng-class="{'actif' : events.estCritereValeurActif(valeur.CodeInterne)}"
+                       ng-click="events.ajouterCritere(valeur.CodeInterne)">
+                        <b>{{ valeur.Libelle }}</b>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+        <button class="filtre1 filtre" ng-class="{'disabled': events.getCritereEnumere('allergenes')==null}">
+            <div class="icon-filtre">
+                <span class="icon-Fichier-27"></span>
+            </div>
+            <div class="filtre-libelle">
+                <p>
+                    Allergènes<br />
+                    <span>Choisir un filtre</span>
+                </p>
+            </div>
+            <div class="filtre-plus">
+                <span class="icon-Fichier-52"></span>
+            </div>
+
+
+        </button>
+
+        <div class="filtre-content" id="filtre-allergenes-ouvert">
+            <ul>
+                <li ng-repeat="valeur in events.getCritereEnumere('allergenes')">
+                    <a class="filtre-liste" ng-class="{'actif' : events.estCritereValeurActif(valeur.CodeInterne)}">
+                        <b>{{ valeur.Libelle }}</b>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <button class="filtre1 filtre" onclick="afficherPopupFiltre('filtre-parts-ouvert')" ng-class="{'disabled': events.getCritereEnumere('35366ddd625e477da5d0a835ebf526e6')==null}">
+            <div class="icon-filtre">
+                <span class="icon-Fichier-26"></span>
+            </div>
+            <div class="filtre-libelle">
+                <p>
+                    Par taille<br />
+                    <span ng-bind="events.valeurCritereActif('35366ddd625e477da5d0a835ebf526e6')==null?'Choisir un filtre':events.valeurCritereActif('35366ddd625e477da5d0a835ebf526e6').Name">Choisir un filtre</span>
+                </p>
+            </div>
+            <div class="filtre-plus">
+                <span class="icon-Fichier-52"></span>
+            </div>
+
+
+        </button>
+        <div class="filtre-content" id="filtre-parts-ouvert">
+            <ul>
+                <li>
+                    <a class="filtre-liste" ng-class="{'actif' : !(events.estCritereActif('35366ddd625e477da5d0a835ebf526e6'))}" ng-click="events.retirerCritere('35366ddd625e477da5d0a835ebf526e6')">
+                        <b>Toutes les tailles</b>
+                    </a>
+                </li>
+                <li ng-repeat="valeur in events.getCritereEnumere('35366ddd625e477da5d0a835ebf526e6')">
+                    <a class="filtre-liste"
+                       ng-class="{'actif' : events.estCritereValeurActif(valeur.CodeInterne)}"
+                       ng-click="events.ajouterCritere(valeur.CodeInterne)">
+                        <b>{{ valeur.Libelle }}</b>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+        <button class="filtre1 filtre" ng-class="{'disabled': events.getCritereEnumere('dispo')==null}">
+            <div class="icon-filtre">
+                <span class="icon-Fichier-53"></span>
+            </div>
+            <div class="filtre-libelle">
+                <p>
+                    Disponibilité<br />
+                    <span>Choisir un filtre</span>
+                </p>
+            </div>
+            <div class="filtre-plus">
+                <span class="icon-Fichier-52"></span>
+            </div>
+        </button>
+        <button class="filtre-effacer" ng-click="events.viderFacets(true, false, false)">
+            <p>
+                <b>Effacer</b> tous les filtres<span></span>
+            </p>
+        </button>
+
+    </div>
+
+    <div class="Liste-content">
+        <div class="row mCustomScrollbar" data-mcs-theme="dark">
+            <div id="content-6" class="content horizontal-images">
+                <ul class="prod-flex">
+                    <li class="prod-flex-item" ng-class="{'prix-promo' : article.EstEnPromo, 'uni-commande': !(article.DisponibleMagasin)}" ng-repeat="article in current.Articles">
+                        <a href="#" ng-click="events.onProductClick(article)">
+                            <div class="img-product" ng-style="{'background-image':'url('+article.IntermediateImage+')'}"></div>
+                            <!--<img ng-src="{{article.IntermediateImage}}" alt="{{article.Libelle}}" title="{{article.Libelle}}">-->
+                            <div class="prod-text">
+                                <div class="prod-text1">
+                                    <div class="prod-text2">
+                                        <p class="libelle">{{article.Libelle}}</p>
+                                        <p ng-if="article.EstEnPromo">
+                                            <span class="prix"><span class='prix-barre' ng-bind-html="article.PuTTC | FormatCurrency"></span> <span class="promo">-{{article.PctRemise}}%</span> <span ng-bind-html="article.PuPromoTTC | FormatCurrency"></span></span>
+                                        </p>
+                                        <p ng-if="!article.EstEnPromo">
+                                            <span class="prix"><span class='prix-barre' ng-bind-html="article.PuTTC | FormatCurrency"></span></span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="Liste-bg"></div>
+</section>
