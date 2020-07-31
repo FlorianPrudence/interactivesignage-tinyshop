@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Template xmlns="https://schemas.altazion.com/sys/template.xsd">
-  <Name>demo-tinyshop</Name>
+  <Name>demo-test</Name>
   <Description>Lorem Ipsum</Description>
   <Author>Altazion</Author>
   <BasedOn>Vending</BasedOn>
@@ -48,8 +48,12 @@
     </Shared>
   </Content>
   <Settings>
-    <Variable code="BackgroundImage01" kind="ImageUrl" label="Image de fond Main" defaultValue="https://clientsimplemente.blob.core.windows.net/digitalsignage-resources/bg-home.jpg"/>
-    <Variable code="BackgroundImage02" kind="ImageUrl" label="Image de fond Secondaire" defaultValue="https://clientsimplemente.blob.core.windows.net/digitalsignage-resources/bg-2.jpg"/>
+    <SettingsPage kind="HomePage">
+      <Group code="BackgroundImagesGroup" label="Configuration des images de fond">
+        <Variable code="BackgroundImage01" kind="ImageUrl" label="Image de fond Main" defaultValue="https://clientsimplemente.blob.core.windows.net/digitalsignage-resources/bg-home.jpg"/>
+        <Variable code="BackgroundImage02" kind="ImageUrl" label="Image de fond Secondaire" defaultValue="https://clientsimplemente.blob.core.windows.net/digitalsignage-resources/bg-2.jpg"/>
+      </Group>
+    </SettingsPage>
   </Settings>
   
   <ApplicationBaseConfiguration>
@@ -61,8 +65,8 @@
     </Variations>
     
     <Settings>
-      <Setting code="BackgroundImage01" value="https://clientsimplemente.blob.core.windows.net/digitalsignage-resources/bg-home.jpg" />
-      <Setting code="BackgroundImage02" value="https://clientsimplemente.blob.core.windows.net/digitalsignage-resources/bg-2.jpg" />
+      <Setting code="Main.BackgroundImagesGroup.BackgroundImage01" value="https://clientsimplemente.blob.core.windows.net/digitalsignage-resources/bg-home.jpg" />
+      <Setting code="Main.BackgroundImagesGroup.BackgroundImage02" value="https://clientsimplemente.blob.core.windows.net/digitalsignage-resources/bg-2.jpg" />
     </Settings>  
   </PublishSettings>
 
