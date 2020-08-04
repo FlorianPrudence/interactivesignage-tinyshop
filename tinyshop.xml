@@ -30,6 +30,14 @@
       <VariationContent kind="ProcessStep2">
         <Folder path="Main" />
       </VariationContent>
+      <Settings>
+        <SettingsPage kind="HomePage">
+          <Group code="BackgroundImagesGroup" label="Configuration des images de fond">
+            <Variable code="BackgroundImage01" kind="ImageUrl" label="Image de fond Main" defaultValue="https://clientsimplemente.blob.core.windows.net/digitalsignage-resources/bg-home.jpg"/>
+            <Variable code="BackgroundImage02" kind="ImageUrl" label="Image de fond Secondaire" defaultValue="https://clientsimplemente.blob.core.windows.net/digitalsignage-resources/bg-2.jpg"/>
+          </Group>
+        </SettingsPage>
+      </Settings>
     </Variation>
     <Variation code="Search" label="Version avec recherche au centre">
       <VariationContent kind="HomePage">
@@ -47,14 +55,6 @@
       <File path="scripts/app.js"/>
     </Shared>
   </Content>
-  <Settings>
-    <SettingsPage kind="HomePage">
-      <Group code="BackgroundImagesGroup" label="Configuration des images de fond">
-        <Variable code="BackgroundImage01" kind="ImageUrl" label="Image de fond Main" defaultValue="https://clientsimplemente.blob.core.windows.net/digitalsignage-resources/bg-home.jpg"/>
-        <Variable code="BackgroundImage02" kind="ImageUrl" label="Image de fond Secondaire" defaultValue="https://clientsimplemente.blob.core.windows.net/digitalsignage-resources/bg-2.jpg"/>
-      </Group>
-    </SettingsPage>
-  </Settings>
   
   <ApplicationBaseConfiguration>
   </ApplicationBaseConfiguration>
