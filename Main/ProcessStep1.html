@@ -1,5 +1,5 @@
-<div class="panier-content-2">
-    <h3><button ng-click="events.goTo('Panier')"><span class="icon-Fichier-4"></span></button> Récap panier</h3>
+ï»¿<div class="panier-content-2">
+    <h3><button ng-click="events.goTo('Panier')"><span class="icon-Fichier-4"></span></button> RÃ©cap panier</h3>
 
     <div class="dispo-com" ng-show="events.getQuantiteDuGroupe('')>0">
         <h4 class="orange">Dispo sur commande</h4>
@@ -10,7 +10,7 @@
                         <a href="" class="panier-prod-libel">
                             {{ligne.Libelle}}
                         </a><br />
-                        <span class="pc2-bloc-ligne">Format : <span>{{ligne.AttributsDifferentiants[0]}} </span> |  Quantité <span>x{{ligne.Quantite}}</span> </span>
+                        <span class="pc2-bloc-ligne">Format : <span>{{ligne.AttributsDifferentiants[0]}} </span> |  QuantitÃ© <span>x{{ligne.Quantite}}</span> </span>
                     </div>
                     <div class="bloc-recap-droite">
                         <span ng-bind-html="ligne.PuFinalTTC * ligne.Quantite | FormatCurrency"></span>
@@ -32,7 +32,7 @@
     </div>
 
     <div class="dispo-im " ng-show="events.getQuantiteDuGroupe('(m)')>0">
-        <h4 class="orange-2">Disponible immédiatement</h4>
+        <h4 class="orange-2">Disponible immÃ©diatement</h4>
         <div class="dispo-comm-bloc bg-orange-2 pc2-bloc">
             <ul>
                 <li ng-repeat="ligne in events.getLignesDuGroupe('(m)')">
@@ -40,7 +40,7 @@
                         <a href="" class="panier-prod-libel">
                             {{ligne.Libelle}}
                         </a><br />
-                        <span class="pc2-bloc-ligne">Format : <span>{{ligne.AttributsDifferentiants[0]}} </span> |  Quantité <span>x{{ligne.Quantite}}</span> </span>
+                        <span class="pc2-bloc-ligne">Format : <span>{{ligne.AttributsDifferentiants[0]}} </span> |  QuantitÃ© <span>x{{ligne.Quantite}}</span> </span>
                     </div>
                     <div class="bloc-recap-droite">
                         <span ng-bind-html="ligne.PuFinalTTC * ligne.Quantite | FormatCurrency"></span>
@@ -102,7 +102,7 @@
 
 
                     <div class="quand">
-                        <p class="orange">Quand souhaitez vous être livré ?</p>
+                        <p class="orange">Quand souhaitez vous Ãªtre livrÃ© ?</p>
                     </div>
                     <div class="group bloc-50">
                         <input required="" type="date" autocomplete="off" ng-click="events.setMinDate($event)" ng-model="mDate">
@@ -115,7 +115,7 @@
                         <input required="" type="time" autocomplete="off" ng-model="mDate">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>à quelle heure</label>
+                        <label>Ã  quelle heure</label>
                     </div>
                     <button class="bt" ng-click="events.commandeSimple($event)" ng-disabled="FormSmp.$invalid" ng-class="{'disabled' : login}">
                         <span class="icon-Fichier-25"></span> Valider les informations
@@ -134,7 +134,7 @@
                         <input required="" type="text" ng-model="processClient.Prenom" autocomplete="off">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>Prénom</label>
+                        <label>PrÃ©nom</label>
                     </div>
 
                     <div class="group">
@@ -148,7 +148,7 @@
                         <input required="" type="text" maxlength="10" ng-model="processClient.Telephone" autocomplete="off">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>Télephone</label>
+                        <label>TÃ©lephone</label>
                     </div>
 
                     <div class="group bloc-50 ">
@@ -161,7 +161,7 @@
                         <input required="" type="text" ng-model="processClient.Adresse" autocomplete="off">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>Adresse complète</label>
+                        <label>Adresse complÃ¨te</label>
                     </div>
                     <div class="group bloc-50 bloc-50-retour">
                         <input required="" type="text" maxlength="5" ng-model="processClient.CP" autocomplete="off">
@@ -179,7 +179,7 @@
 
 
                     <div class="quand">
-                        <p class="orange">Quand souhaitez vous être livré ?</p>
+                        <p class="orange">Quand souhaitez vous Ãªtre livrÃ© ?</p>
                     </div>
                     <div class="group bloc-50">
                         <input required="" type="date" autocomplete="off" ng-click="events.setMinDate($event)" ng-model="mDate">
@@ -192,7 +192,7 @@
                         <input required="" type="time" autocomplete="off" ng-model="mDate">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>à quelle heure</label>
+                        <label>Ã  quelle heure</label>
                     </div>
                     <button class="bt" ng-click="events.commandeComplete($event)" ng-disabled="FormCmp.$invalid" ng-class="{'disabled' : login}">
                         <span class="icon-Fichier-25"></span> Valider les informations
